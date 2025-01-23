@@ -1,13 +1,53 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>dateTime</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="DateTime"></app-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">dateTime</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <!-- Sección de Datos de Nacimiento -->
+    <ion-list-header>
+      <ion-label>Datos de Nacimiento</ion-label>
+    </ion-list-header>
+    <ion-item >
+      <ion-label>Fecha de Nacimiento</ion-label>
+    </ion-item>
+    <ion-datetime 
+    display-format="DD MMMM YYYY"
+    [value]="fechaNaci.toISOString()"
+    (ionChange)="cambioFecha($event)">
+  </ion-datetime>
+
+    <!-- Sección de Restricciones -->
+    <ion-list-header>
+      <ion-label>Restricciones</ion-label>
+    </ion-list-header>
+
+    <ion-item button>
+      <ion-label>Min y Max</ion-label>
+    </ion-item>
+    <ion-datetime 
+    display-format="DD MMMM YYYY"
+    min="2015-01-01"
+    max="2025-12-31"
+    presentation="date">
+  </ion-datetime>
+    <ion-item button>
+      <ion-label>Años</ion-label>
+      <ion-datetime 
+        presentation="year"
+        [yearValues]="customYearValues">
+      </ion-datetime>
+    </ion-item>
+
+    <!-- Opciones Personalizadas -->
+    <ion-item button>
+      <ion-label>Custom Options</ion-label>
+    </ion-item>
+    <ion-datetime 
+    [value]="fechaNaci.toISOString()" 
+    presentation="date">
+    <ion-buttons slot="buttons">
+      <ion-button (click)="logHola()">Hola</ion-button>
+      <ion-button (click)="logMundo()">Mundo</ion-button>
+    </ion-buttons>
+  </ion-datetime>
+  </ion-list>
 </ion-content>
