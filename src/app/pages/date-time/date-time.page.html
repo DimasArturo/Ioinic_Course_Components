@@ -6,48 +6,73 @@
     <ion-list-header>
       <ion-label>Datos de Nacimiento</ion-label>
     </ion-list-header>
-    <ion-item >
+    <ion-item>
       <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-datetime-button datetime="fechaNacimiento"></ion-datetime-button>
     </ion-item>
-    <ion-datetime 
-    display-format="DD MMMM YYYY"
-    [value]="fechaNaci.toISOString()"
-    (ionChange)="cambioFecha($event)">
-  </ion-datetime>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="fechaNacimiento"
+          [value]="fechaNaci.toISOString()"
+          presentation="date"
+          display-format="DD MMMM YYYY"
+          (ionChange)="cambioFecha($event)">
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
 
     <!-- Sección de Restricciones -->
     <ion-list-header>
       <ion-label>Restricciones</ion-label>
     </ion-list-header>
-
-    <ion-item button>
+    <ion-item>
       <ion-label>Min y Max</ion-label>
+      <ion-datetime-button datetime="minMaxDatetime"></ion-datetime-button>
     </ion-item>
-    <ion-datetime 
-    display-format="DD MMMM YYYY"
-    min="2015-01-01"
-    max="2025-12-31"
-    presentation="date">
-  </ion-datetime>
-    <ion-item button>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="minMaxDatetime"
+          min="2015-01-01"
+          max="2025-12-31"
+          presentation="date"
+          display-format="DD MMMM YYYY">
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <ion-item>
       <ion-label>Años</ion-label>
-      <ion-datetime 
-        presentation="year"
-        [yearValues]="customYearValues">
-      </ion-datetime>
+      <ion-datetime-button datetime="yearPicker"></ion-datetime-button>
     </ion-item>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="yearPicker"
+          presentation="year"
+          [yearValues]="customYearValues">
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
 
     <!-- Opciones Personalizadas -->
-    <ion-item button>
+    <ion-item>
       <ion-label>Custom Options</ion-label>
+      <ion-datetime-button datetime="customOptionsDatetime"></ion-datetime-button>
     </ion-item>
-    <ion-datetime 
-    [value]="fechaNaci.toISOString()" 
-    presentation="date">
-    <ion-buttons slot="buttons">
-      <ion-button (click)="logHola()">Hola</ion-button>
-      <ion-button (click)="logMundo()">Mundo</ion-button>
-    </ion-buttons>
-  </ion-datetime>
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="customOptionsDatetime"
+          [value]="fechaNaci.toISOString()" 
+          presentation="date">
+          <ion-buttons slot="buttons">
+            <ion-button (click)="logHola()">Hola</ion-button>
+            <ion-button (click)="logMundo()">Mundo</ion-button>
+          </ion-buttons>
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
   </ion-list>
 </ion-content>
