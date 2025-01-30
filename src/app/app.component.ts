@@ -3,6 +3,9 @@ import { Observable } from 'rxjs';
 import { Componente } from './interfaces/interfaces';
 import { DataService } from './services/data.service';
 import { Platform } from '@ionic/angular';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @Component({
   selector: 'app-root',
