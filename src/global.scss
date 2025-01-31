@@ -46,3 +46,7 @@ ion-item{
 ion-searchbar{
   --box-shadow: none !important;
 }
+ion-header {
+  --padding-top: env(safe-area-inset-top);
+}
+
